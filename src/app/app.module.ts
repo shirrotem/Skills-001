@@ -3,8 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PokemonsComponent } from './pokemons/pokemons.component';
-import { PokemonsInformationComponent } from './pokemons-information/pokemons-information.component';
+import { PokemonsComponent } from './component/pokemons/pokemons.component';
+import { PokemonsInformationComponent } from './component/pokemons-information/pokemons-information.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
