@@ -2,10 +2,11 @@
   type="text"
   placeholder="Search for Pokemon..."
   [(ngModel)]="searchText"
+  (input)="filterPokemons()"
 />
 
 <ul class="card-grid">
-  <li *ngFor="let pokemon of filterPokemons()">
+  <li *ngFor="let pokemon of filteredPokemons">
     <div class="card" (click)="onClick(pokemon)">
       <span>{{ pokemon.name }}</span>
       <br />

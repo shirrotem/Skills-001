@@ -12,12 +12,14 @@ import { PokemonService } from '../../services/pokemon.service';
 export class PokemonsComponent {
   pokemons: Pokemon[] = [];
   searchText: string = "";
+  filteredPokemons: Pokemon[] = [];
 
   constructor(private router: Router, private pokService: PokemonService) {}
 
     ngOnInit(): void {
       this.pokService.getPokemons().then(val => {
         this.pokemons = val;
+        this.filteredPokemons= val;
       });
 
     }
@@ -26,13 +28,13 @@ export class PokemonsComponent {
       this.router.navigate(['/pokemon', pokemon.id]);
     }
 
-    filterPokemons() {
+    filterPokemons() : void{
       if (this.searchText.trim() === "") //delete spaces
       {
-        return this.pokemons;
+         this.filteredPokemons= this.pokemons;
       } else {
         const searchTerm = this.searchText.toLowerCase();
-        return this.pokemons.filter(pokemon =>
+        this.filteredPokemons= this.pokemons.filter(pokemon =>
           pokemon.name.toLowerCase().includes(searchTerm)
         );
       }
