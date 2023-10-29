@@ -1,0 +1,19 @@
+
+$card-bg-color: #fff;
+$card-border-color: #3d3fb6;
+
+
+.card {
+  width: 300px;
+  border: 3px solid $card-border-color;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  background-color: $card-bg-color;
+  height: 100px;
+
+}
+
+li {
+    display: flex;
+}
