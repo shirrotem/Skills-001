@@ -10,9 +10,11 @@ import { Pokemon } from '../pokemon';
 export class PokemonsComponent {
 
   pokemons: Pokemon[]= [];
+  pokemon? : Pokemon;
+
     async ngOnInit(): Promise<void> {
       try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=5");
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100");
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -33,16 +35,16 @@ export class PokemonsComponent {
           catch(error) {
             console.error("An error occurred:", error);
           }
-          
 
         });
-
-
-
-
 
       } catch (error) {
         console.error("An error occurred:", error);
       }
+    }
+
+    onClick(pokemon:Pokemon):void{
+      console.log(pokemon);
+      this.pokemon = pokemon;
     }
 }

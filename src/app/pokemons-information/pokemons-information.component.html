@@ -1,1 +1,21 @@
-<p>pokemons-information works!</p>
+<div *ngIf="pokemon">
+  <h2>{{ pokemon.name | uppercase }} Information:</h2>
+  <img src="{{ pokemon.img }}" />
+  <br />
+  <div>
+    <span>Name: {{ pokemon.name }}</span
+    ><br />
+    <span>Height: {{ pokemon.height }}</span
+    ><br />
+    <span>Weight: {{ pokemon.weight }}</span
+    ><br />
+    <span>Experience: {{ pokemon.experience }}</span
+    ><br />
+    <span
+      >Type:
+      <ng-container *ngFor="let type of pokemon.types; let last = last">
+        {{ type }}{{ !last ? ", " : "" }}
+      </ng-container></span
+    >
+  </div>
+</div>
