@@ -1,6 +1,11 @@
-<h2>My Pokemons:</h2>
+<input
+  type="text"
+  placeholder="Search for Pokemon..."
+  [(ngModel)]="searchText"
+/>
+
 <ul class="card-grid">
-  <li *ngFor="let pokemon of pokemons">
+  <li *ngFor="let pokemon of filterPokemons()">
     <div class="card" (click)="onClick(pokemon)">
       <span>{{ pokemon.name }}</span>
       <br />
@@ -8,6 +13,3 @@
     </div>
   </li>
 </ul>
-<div *ngIf="pokemon">
-  <app-pokemons-information [pokemon]="pokemon"></app-pokemons-information>
-</div>

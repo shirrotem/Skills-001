@@ -9,7 +9,17 @@ $card-border-color: #0892b8;
   margin: 10px; 
   background-color: $card-bg-color;
   height: 100px;
+
+  &:hover {
+    background-color: #d1dbd2;
+    cursor: pointer;
+  }
 }
+
+h2 {
+  text-align: center; // Center the text within the h2 element
+}
+
 
 .card-grid {
   display: grid;

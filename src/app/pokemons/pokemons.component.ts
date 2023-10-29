@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../pokemon';
+import { Router } from '@angular/router';
+import { PokemonService } from '../pokemon.service';
 
 
 @Component({
@@ -8,43 +10,33 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./pokemons.component.scss']
 })
 export class PokemonsComponent {
+  pokemons: Pokemon[] = [];
+  searchText: string = "";
 
-  pokemons: Pokemon[]= [];
-  pokemon? : Pokemon;
+  constructor(private router: Router, private pokService: PokemonService) {}
 
-    async ngOnInit(): Promise<void> {
-      try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100");
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-    
-        const data = await response.json();
-        const arrayOfUrls = data.results;
-        arrayOfUrls.forEach(async (pokemonObj: any) => {
-          try{
-            const pokResponse = await fetch(pokemonObj.url);
-            if (!pokResponse.ok) {
-              throw new Error(`HTTP error! Status: ${pokResponse.status}`);
-            }
-            const pokData = await pokResponse.json();
-            const typesArray= pokData.types.map((typObj:any)=> typObj.type.name);
-            const pokemon = new Pokemon(pokData.name, pokData.id, pokData.sprites.back_default, pokData.height, pokData.weight, pokData.base_experience, typesArray);
-            this.pokemons.push(pokemon);
-          }
-          catch(error) {
-            console.error("An error occurred:", error);
-          }
+    ngOnInit(): void {
+      this.pokService.getPokemons().then(val => {
+        this.pokemons = val;
+      });
 
-        });
+    }
 
-      } catch (error) {
-        console.error("An error occurred:", error);
+    onClick(pokemon:Pokemon){
+      this.router.navigate(['/pokemon', pokemon.id]);
+    }
+
+    filterPokemons() {
+      if (this.searchText.trim() === "") //delete spaces
+      {
+        return this.pokemons;
+      } else {
+        const searchTerm = this.searchText.toLowerCase();
+        return this.pokemons.filter(pokemon =>
+          pokemon.name.toLowerCase().includes(searchTerm)
+        );
       }
     }
 
-    onClick(pokemon:Pokemon):void{
-      console.log(pokemon);
-      this.pokemon = pokemon;
-    }
+
 }
