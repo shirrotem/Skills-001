@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { PokemonsUrlObject } from '../model/pokemonsUrlObject';
+import { PokemonResponse } from '../model/pokemonResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ export class PokemonService {
   getPokemons(): Observable<Pokemon[]> {
     return this.fetchPokemonList().pipe(
       switchMap(arrayOfUrls => {
-        const fetchPromises = arrayOfUrls.map((pokemonObj: any) => {
+        const fetchPromises = arrayOfUrls.map((pokemonObj: PokemonsUrlObject) => {
           return this.fetchPokemonData(pokemonObj.url);
         });
         return forkJoin(fetchPromises);
@@ -45,12 +47,12 @@ export class PokemonService {
   }
 
   private fetchPokemonData(url: string): Observable<Pokemon> {
-    return this.http.get(url).pipe(
+    return this.http.get<PokemonResponse>(url).pipe(
       catchError((error: any) => {
         console.error("An error occurred:", error);
-        return new Observable<Pokemon>();
+        return new Observable<PokemonResponse>();
       }),
-      map((pokData: any) => {
+      map((pokData: PokemonResponse) => {
         const typesArray = pokData.types.map((typObj: any) => typObj.type.name);
         return new Pokemon(
           pokData.name,
