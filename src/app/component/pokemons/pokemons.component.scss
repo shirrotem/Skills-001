@@ -1,5 +1,6 @@
 $card-bg-color: #d9eff4;
 $card-border-color: #0892b8;
+$searches-color: rgb(120, 117, 117);
 
 .card {
   width: 100px; 
@@ -30,4 +31,12 @@ h2 {
 
 li {
   display: flex;
+}
+
+.searches{
+  color: $searches-color;
+}
+
+label{
+  font-weight: bold;
 }

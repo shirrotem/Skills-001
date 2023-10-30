@@ -1,0 +1,13 @@
+<div class="login-container">
+  <h1>Login</h1>
+  <form (ngSubmit)="onClick()">
+    <input
+      type="email"
+      placeholder="Your Email Address..."
+      [(ngModel)]="emailText"
+      name="email"
+    />
+    <button type="submit">Login</button>
+  </form>
+  <h3 *ngIf="isEmailNotOk">Unauthorized email address</h3>
+</div>

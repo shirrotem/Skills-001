@@ -6,6 +6,7 @@ import { forkJoin } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { PokemonsUrlObject } from '../model/pokemonsUrlObject';
 import { PokemonResponse } from '../model/pokemonResponse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ import { PokemonResponse } from '../model/pokemonResponse';
 export class PokemonService {
   private pokemons: Pokemon[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getPokemons(): Observable<Pokemon[]> {
     return this.fetchPokemonList().pipe(
@@ -65,6 +66,12 @@ export class PokemonService {
         );
       })
     );
+  }
+
+  checkAuthentication( ) :void {
+    const isLoggedIn = localStorage.getItem('loggedin');
+    if(isLoggedIn!=="true")
+      this.router.navigate(['/login']);
   }
 }
 
