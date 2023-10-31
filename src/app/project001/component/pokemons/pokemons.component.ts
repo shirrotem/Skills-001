@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Pokemon } from '../../model/pokemon';
 import { Router } from '@angular/router';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from 'src/app/project001/services/pokemon.service';
 import { Subscription } from 'rxjs';
 
 

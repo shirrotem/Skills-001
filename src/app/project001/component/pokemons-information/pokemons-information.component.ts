@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Pokemon } from '../../model/pokemon';
-import { PokemonService } from 'src/app/services/pokemon.service';
+import { PokemonService } from 'src/app/project001/services/pokemon.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription, map, switchMap } from 'rxjs';
 
