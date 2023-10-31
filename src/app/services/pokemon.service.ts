@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PokemonService {
   private pokemons: Pokemon[] = [];
+  private pokenonsTypes: string[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -55,6 +56,13 @@ export class PokemonService {
       }),
       map((pokData: PokemonResponse) => {
         const typesArray = pokData.types.map((typObj: any) => typObj.type.name);
+        typesArray.forEach(type=>
+          {
+            if(!this.pokenonsTypes.includes(type))
+            {
+              this.pokenonsTypes.push(type);
+            }
+          });
         return new Pokemon(
           pokData.name,
           pokData.id,
@@ -63,9 +71,14 @@ export class PokemonService {
           pokData.weight,
           pokData.base_experience,
           typesArray
-        );
+        );  
       })
     );
+  }
+
+  getPokemonsTypes(): string[]{
+    return this.pokenonsTypes;
+
   }
 
   checkAuthentication( ) :void {

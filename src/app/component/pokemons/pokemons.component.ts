@@ -17,6 +17,9 @@ export class PokemonsComponent {
   pokemonsSubscription: Subscription | undefined;
   pokemonsSearches: string[]=[];
   sizePokemonsSearches: number=5;
+  
+  selectedType: string="";
+  uniqueTypes: string[]=[];
 
   
 
@@ -32,6 +35,8 @@ export class PokemonsComponent {
     this.pokemonsSearches = existingSearchesJSON ? JSON.parse(existingSearchesJSON) : [];
 
     this.pokService.checkAuthentication();
+    this.uniqueTypes= this.pokService.getPokemonsTypes();
+    
     
 
   }
@@ -68,9 +73,12 @@ export class PokemonsComponent {
         pokemon.name.toLowerCase().includes(searchTerm)
       );
     }
+    if(this.selectedType !== "" ){
+      this.filteredPokemons= this.filteredPokemons.filter(pokemon=>
+        pokemon.types.includes(this.selectedType));
+    }
+
   }
-
-
 }
 
 
