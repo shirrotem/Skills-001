@@ -7,7 +7,7 @@ body{
 
 }
 
-input {
+.general-input {
     width: 200px;
     padding: 0.5rem;
     font-size: 1rem;
@@ -20,7 +20,7 @@ input {
     }
 }
 
-button {
+.general-button {
     padding: 0.5rem 1rem;
     background-color: #007bff;
     color: white;

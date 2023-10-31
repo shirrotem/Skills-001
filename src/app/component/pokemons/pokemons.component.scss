@@ -16,27 +16,24 @@ $searches-color: rgb(120, 117, 117);
     cursor: pointer;
   }
 }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    list-style: none;
+  }
 
-h2 {
-  text-align: center; // Center the text within the h2 element
-}
+   .li-card{
+    display: flex;
+  }
+  
 
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 10px;
-  list-style: none;
-}
-
-li {
-  display: flex;
-}
 
 .searches{
   color: $searches-color;
+
+  .five-recent-searches{
+    font-weight: bold;
+  }
 }
 
-label{
-  font-weight: bold;
-}

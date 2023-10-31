@@ -29,14 +29,6 @@ export class LoginComponent {
     {
       this.router.navigate(['/pokemon']);
     }
-    else{
-      localStorage.setItem("loggedin", "false");
-
-    }
   }
-
-  
-
-
 
 }

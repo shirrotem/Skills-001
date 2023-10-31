@@ -13,7 +13,7 @@ export class LogoutComponent {
   constructor(private router:Router){}
 
   logout(): void{
-    localStorage.setItem("loggedin", "false");
+    localStorage.removeItem("loggedin");
     this.router.navigate(['/login']);
   }
 
