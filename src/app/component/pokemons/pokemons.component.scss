@@ -37,3 +37,20 @@ $searches-color: rgb(120, 117, 117);
   }
 }
 
+.filter{
+  margin: 20px 0; 
+  font-size: 16px; 
+  color: #333333;
+  width: 100%; 
+
+  .filterType {
+    width: 10%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+}

@@ -14,6 +14,18 @@
   </ng-container>
 </div>
 
+<div class="filter">
+  <select
+    class="filterType"
+    id="filterType"
+    [(ngModel)]="selectedType"
+    (change)="filterPokemons()"
+  >
+    <option value="">All</option>
+    <option *ngFor="let type of uniqueTypes" [value]="type">{{ type }}</option>
+  </select>
+</div>
+
 <ul class="card-grid">
   <li class="li-card" *ngFor="let pokemon of filteredPokemons">
     <div class="card" (click)="onClick(pokemon)">
