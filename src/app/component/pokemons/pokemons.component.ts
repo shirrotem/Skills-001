@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Subscription } from 'rxjs';
 
+
 @Component({
   selector: 'app-pokemons',
   templateUrl: './pokemons.component.html',
@@ -14,6 +15,10 @@ export class PokemonsComponent {
   searchText: string = "";
   filteredPokemons: Pokemon[] = [];
   pokemonsSubscription: Subscription | undefined;
+  pokemonsSearches: string[]=[];
+  sizePokemonsSearches: number=5;
+
+  
 
   constructor(private router: Router, private pokService: PokemonService) {}
 
@@ -22,6 +27,13 @@ export class PokemonsComponent {
       this.pokemons = val;
       this.filteredPokemons = val;
     });
+
+    const existingSearchesJSON = localStorage.getItem('pokemonSearch');
+    this.pokemonsSearches = existingSearchesJSON ? JSON.parse(existingSearchesJSON) : [];
+
+    this.pokService.checkAuthentication();
+    
+
   }
 
   ngOnDestroy() {
@@ -32,6 +44,19 @@ export class PokemonsComponent {
 
   onClick(pokemon: Pokemon) {
     this.router.navigate(['/pokemon', pokemon.id]);
+
+    const existingSearchesJSON = localStorage.getItem('pokemonSearch');
+    const existingSearches = existingSearchesJSON ? JSON.parse(existingSearchesJSON) : [];
+    
+    existingSearches.push(pokemon.name);
+
+    if(existingSearches.length > this.sizePokemonsSearches){
+      existingSearches.shift();
+    }
+    
+    localStorage.setItem('pokemonSearch', JSON.stringify(existingSearches));
+
+    this.pokemonsSearches= existingSearches;
   }
 
   filterPokemons(): void {
@@ -44,6 +69,8 @@ export class PokemonsComponent {
       );
     }
   }
+
+
 }
 
 

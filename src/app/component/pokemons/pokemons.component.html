@@ -1,12 +1,21 @@
+<app-logout></app-logout>
+<br />
 <input
+  class="general-input"
   type="text"
   placeholder="Search for Pokemon..."
   [(ngModel)]="searchText"
   (input)="filterPokemons()"
 />
+<div class="searches">
+  <label class="five-recent-searches">Five Recent Searches:</label>
+  <ng-container *ngFor="let pokemon of pokemonsSearches; let last = last">
+    {{ pokemon }}{{ !last ? ", " : "" }}
+  </ng-container>
+</div>
 
 <ul class="card-grid">
-  <li *ngFor="let pokemon of filteredPokemons">
+  <li class="li-card" *ngFor="let pokemon of filteredPokemons">
     <div class="card" (click)="onClick(pokemon)">
       <span>{{ pokemon.name }}</span>
       <br />

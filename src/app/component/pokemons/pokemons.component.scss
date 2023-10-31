@@ -1,5 +1,6 @@
 $card-bg-color: #d9eff4;
 $card-border-color: #0892b8;
+$searches-color: rgb(120, 117, 117);
 
 .card {
   width: 100px; 
@@ -15,19 +16,24 @@ $card-border-color: #0892b8;
     cursor: pointer;
   }
 }
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    list-style: none;
+  }
 
-h2 {
-  text-align: center; // Center the text within the h2 element
+   .li-card{
+    display: flex;
+  }
+  
+
+
+.searches{
+  color: $searches-color;
+
+  .five-recent-searches{
+    font-weight: bold;
+  }
 }
 
-
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  gap: 10px;
-  list-style: none;
-}
-
-li {
-  display: flex;
-}

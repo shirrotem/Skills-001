@@ -23,6 +23,7 @@ export class PokemonsInformationComponent {
     ).subscribe(pokemon => {
       this.pokemon = pokemon;
     });
+    this.pokemonService.checkAuthentication();
   }
 
   ngOnDestroy() {
