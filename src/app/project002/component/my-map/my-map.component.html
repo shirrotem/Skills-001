@@ -5,6 +5,13 @@
   placeholder="Enter a place"
   type="text"
 />
+<button
+  *ngIf="isLocation"
+  class="general-button clear-button"
+  (click)="removePlace()"
+>
+  CLEAR
+</button>
 <br />
 <button
   *ngIf="!isWayShown; else removeWay"

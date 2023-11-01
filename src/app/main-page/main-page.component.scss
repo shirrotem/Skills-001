@@ -1,0 +1,62 @@
+// Define color variables
+$primaryColor: #528be7;
+$hoverColor: #084ff3;
+$buttonTextColor: #fff;
+$borderColor: black;
+
+// Define size variables
+$buttonWidth: 700px;
+$buttonHeight: 12px;
+$buttonPadding: 0;
+$borderRadius: 5px;
+$fontSize: 16px;
+$buttonMarginTop: 20px;
+$picWidth: 700px;
+$picHeight: 500px;
+$picBorderWidth: 3px;
+$picBorderRadius: 10px;
+
+.project-button {
+  display: block;
+  width: $buttonWidth;
+  padding: $buttonHeight $buttonPadding;
+  border: none;
+  background-color: $primaryColor;
+  color: $buttonTextColor;
+  border-radius: $borderRadius;
+  font-size: $fontSize;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  text-align: center;
+  margin-top: $buttonMarginTop;
+
+  &:hover {
+    background-color: $hoverColor;
+    transform: scale(1.05);
+  }
+}
+
+.project-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project {
+  text-align: center;
+  margin: $buttonMarginTop;
+}
+
+.pic-pokemon {
+  width: $picWidth;
+  height: $picHeight;
+  border: $picBorderWidth solid $borderColor;
+  border-radius: $picBorderRadius;
+}
+
+.pic-map {
+  width: $picWidth;
+  height: $picHeight;
+  border: $picBorderWidth solid $borderColor;
+  border-radius: $picBorderRadius;
+}

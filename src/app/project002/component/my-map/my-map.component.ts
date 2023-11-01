@@ -14,6 +14,7 @@ export class MyMapComponent {
 
   marker: any;
   newMarker: any= undefined;
+  markers:any[]=[];
 
   directionsService : any;
   directionsRenderer : any;
@@ -21,6 +22,8 @@ export class MyMapComponent {
   office : any;
   
   isWayShown: boolean= false;
+  isLocation: boolean= false;
+  
 
   constructor(private elementRef: ElementRef) {}
 
@@ -66,7 +69,7 @@ export class MyMapComponent {
   }
 
   onPlaceChanged(): void {
-    
+    this.isLocation= true;
     const place = this.autocomplete.getPlace();
     this.inputElement = document.getElementById('autocomplete');
 
@@ -76,16 +79,19 @@ export class MyMapComponent {
     } else {
       this.inputElement.value = place.name;
 
-      // if (this.newMarker) {
-      //   this.newMarker.setMap(null);
-      // }
-
        this.newMarker = new google.maps.Marker({
         map: this.map,
         position: place.geometry.location,
         title: place.name,
       });
+      this.markers.push(this.newMarker);
     }
+  }
+
+  removePlace(): void{
+    this.isLocation= false;
+    this.markers.forEach(marker => marker.setMap(null));
+    this.inputElement.value= "";
   }
 
   calcRoute(): void{
@@ -102,10 +108,19 @@ export class MyMapComponent {
     });
   }
 
-  removeRoute(): void {
-    this.isWayShown= false;
-    this.directionsRenderer.setDirections({ routes: [] });
+  resetMapToInitialView(): void {
+    const initialCenter = new google.maps.LatLng(32.06245871859258, 34.77147499197573);
+    const initialZoom = 15;
+    this.map.setCenter(initialCenter);
+    this.map.setZoom(initialZoom);
   }
+  
+  removeRoute(): void {
+    this.isWayShown = false;
+    this.directionsRenderer.setDirections({ routes: [] });
+    this.resetMapToInitialView();
+  }
+  
   
 }
 

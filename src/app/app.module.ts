@@ -10,6 +10,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './project001/component/login/login.component';
 import { LogoutComponent } from './project001/component/logout/logout.component';
 import { MyMapComponent } from './project002/component/my-map/my-map.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { MyMapComponent } from './project002/component/my-map/my-map.component';
     LoginComponent,
     LogoutComponent,
     MyMapComponent,
+    MainPageComponent,
 
   ],
   imports: [
