@@ -1,9 +1,4 @@
-$card-bg-color: #d9eff4;
-$card-border-color: #0892b8;
-$searches-color: rgb(120, 117, 117);
-$hover-bg-color: #d1dbd2;
-$filter-bg-color: #fff;
-$filter-text-color: #333333;
+@import 'pokemons-variables.scss';
 
 .card {
   width: 100px;
