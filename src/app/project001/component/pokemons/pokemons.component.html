@@ -1,5 +1,6 @@
+<h1>MY POKEMONS</h1>
 <app-logout></app-logout>
-<br />
+
 <input
   class="general-input"
   type="text"
@@ -7,6 +8,7 @@
   [(ngModel)]="searchText"
   (input)="filterPokemons()"
 />
+
 <div class="searches">
   <label class="five-recent-searches">Five Recent Searches:</label>
   <ng-container *ngFor="let pokemon of pokemonsSearches; let last = last">

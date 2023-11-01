@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './project001/component/login/login.component';
 import { LogoutComponent } from './project001/component/logout/logout.component';
-
+import { MyMapComponent } from './project002/component/my-map/my-map.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +17,17 @@ import { LogoutComponent } from './project001/component/logout/logout.component'
     PokemonsComponent,
     PokemonsInformationComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    MyMapComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+
+
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

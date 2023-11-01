@@ -14,6 +14,7 @@ export class LogoutComponent {
 
   logout(): void{
     localStorage.removeItem("loggedin");
+    localStorage.removeItem("pokemonSearch");
     this.router.navigate(['/login']);
   }
 
