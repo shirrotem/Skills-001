@@ -76,9 +76,9 @@ export class MyMapComponent {
     } else {
       this.inputElement.value = place.name;
 
-      if (this.newMarker) {
-        this.newMarker.setMap(null);
-      }
+      // if (this.newMarker) {
+      //   this.newMarker.setMap(null);
+      // }
 
        this.newMarker = new google.maps.Marker({
         map: this.map,
