@@ -10,16 +10,7 @@ export class MainPageComponent {
 
   constructor(private router: Router){}
 
-  PokemonProject() :void{
-    this.router.navigate(['/login']);
+  navToProject(projectRoute: string): void {
+    this.router.navigate([projectRoute]);
   }
-
-  MyMapProject(): void{
-    this.router.navigate(['/map']);
-
-  }
-
-
-
-
 }

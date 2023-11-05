@@ -3,20 +3,16 @@
   <div class="project">
     <img
       class="pic-pokemon"
-      src="https://sm.ign.com/t/ign_il/screenshot/default/c89b6bc7-0673-4720-b761-bab17c7d53fa-xoq7fo_119x.1280.jpg"
+      src="./assets/pokemon.png"
       alt="Pokemon Project Image"
     />
-    <button class="project-button" (click)="PokemonProject()">
+    <button class="project-button" (click)="navToProject('/login')">
       Pokemon Project
     </button>
   </div>
   <div class="project">
-    <img
-      class="pic-map"
-      src="https://sm.mashable.com/t/mashable_in/photo/default/maps_dmpu.1248.jpg"
-      alt="My G-Map Project Image"
-    />
-    <button class="project-button" (click)="MyMapProject()">
+    <img class="pic-map" src="./assets/map.png" alt="My G-Map Project Image" />
+    <button class="project-button" (click)="navToProject('/map')">
       My G-Map Project
     </button>
   </div>
