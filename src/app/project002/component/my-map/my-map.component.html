@@ -5,11 +5,24 @@
   placeholder="Enter a place"
   type="text"
 />
+<button
+  *ngIf="isLocation"
+  class="general-button clear-button"
+  (click)="removePlace()"
+>
+  CLEAR
+</button>
 <br />
-<button *ngIf="!isWayShown" class="general-button" (click)="calcRoute()">
+<button
+  *ngIf="!isWayShown; else removeWay"
+  class="general-button"
+  (click)="calcRoute()"
+>
   Show My Way
 </button>
-<button *ngIf="isWayShown" class="general-button" (click)="removeRoute()">
-  Hide My Way
-</button>
+<ng-template #removeWay>
+  <button class="general-button" (click)="removeRoute()">
+    Hide My Way
+  </button></ng-template
+>
 <div id="map"></div>
